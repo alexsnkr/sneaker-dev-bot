@@ -6,7 +6,7 @@ module.exports = (message) => {
 
 	const words = message.content.split(' ')
 
-	if (!words[0].match(/WTS|WTT|WTR/g) || words.length > 100) {
+	if (!message.content.match(/^(WTS|WTT|WTR)/gi) || words.length > 100) {
 		message.delete()
 		return
 	}
