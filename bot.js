@@ -10,7 +10,7 @@ client.on('ready', () => {
 client.on('message', (message) => {
 	if (message.channel.type === 'dm') return
 
-	const isMod = message.member.roles.cache.some((role) => mod_roles.includes(role.id))
+	const isMod = message.member ? message.member.roles.cache.some((role) => mod_roles.includes(role.id)) : false
 	if (isMod) return
 
 	const channelName = message.channel.name
