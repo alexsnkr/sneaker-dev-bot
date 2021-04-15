@@ -18,7 +18,7 @@ module.exports = (message) => {
 		message.delete()
 	}
 
-	if (messageContent.match(/\$\$|££|€€|%%/)) {
+	if (!(/\d/g.test(messageContent))) {
 		message.author.send(
 			"Your message in the #looking-for-dev channel was deleted because it didn't include a price or percentage.",
 		)
