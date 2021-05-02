@@ -16,13 +16,15 @@ module.exports = (message) => {
 		)
 
 		message.delete()
+		return
 	}
 
-	if (!(/\d/g.test(messageContent))) {
+	if (!/\d/g.test(messageContent)) {
 		message.author.send(
 			"Your message in the #looking-for-dev channel was deleted because it didn't include a price or percentage.",
 		)
 
 		message.delete()
+		return
 	}
 }

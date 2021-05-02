@@ -1,0 +1,9 @@
+{
+	"script": "bot.js",
+	"watch": true,
+	"ignore_watch": ["store.json"],
+	"watch_options": {
+		"followSymlinks": false
+	},
+	"name": "Sneaker Dev Bot"
+}

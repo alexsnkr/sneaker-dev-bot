@@ -3,18 +3,26 @@ const client = new Discord.Client()
 const channels = require('./channels')
 const { token, mod_roles } = require('./config.json')
 
-client.on('ready', () => {
+const store = require('./lib/json-store')
+
+client.on('ready', async () => {
 	console.log(`Logged in as ${client.user.tag}!`)
+
+	await store.hydrate()
 })
 
 client.on('message', (message) => {
-	if (message.channel.type === 'dm') return
+	try {
+		if (message.channel.type === 'dm') return
 
-	const isMod = message.member ? message.member.roles.cache.some((role) => mod_roles.includes(role.id)) : false
-	if (isMod) return
+		const isMod = message.member ? message.member.roles.cache.some((role) => mod_roles.includes(role.id)) : false
+		if (isMod) return
 
-	const channelName = message.channel.name
-	channels[channelName]?.(message)
+		const channelName = message.channel.name
+		channels[channelName]?.(message)
+	} catch (error) {
+		console.log(error)
+	}
 })
 
 client.login(token)
