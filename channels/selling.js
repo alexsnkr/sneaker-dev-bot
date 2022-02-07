@@ -34,6 +34,4 @@ module.exports = (message) => {
 
 	users[message.author.id] = message.createdTimestamp
 	store.set('selling', users)
-
-	message.suppressEmbeds(true)
 }

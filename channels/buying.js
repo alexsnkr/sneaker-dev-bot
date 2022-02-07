@@ -4,6 +4,4 @@ module.exports = (message) => {
 		message.delete()
 		return
 	}
-
-	message.suppressEmbeds(true)
 }

@@ -22,7 +22,7 @@ module.exports = (message) => {
 	const lines = messageContent.split('\n')
 	const compensationLine = lines.find((line) => line.includes('[compensation]'))
 
-	if (!/\d/g.test(compensationLine)) {
+	if (!/\d/g.test(compensationLine) || /[$£€]0|0%|0[$£€]/g.test(compensationLine)) {
 		message.author.send(
 			"Your message in the #looking-for-dev channel was deleted because it didn't include a price or percentage.",
 		)
