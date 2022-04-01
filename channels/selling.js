@@ -6,7 +6,8 @@ module.exports = (message) => {
 	const timestamp = users[message.author.id]
 	const cooldown = 86400000
 
-	const words = message.content.split(' ')
+	const lines = message.content.split(/\r\n|\r|\n/)
+	const lineLimit = 20
 
 	if (!message.content.match(/^(WTS|WTT|WTR)/gi)) {
 		message.author.send(
@@ -14,8 +15,10 @@ module.exports = (message) => {
 		)
 		message.delete()
 		return
-	} else if (words.length > 100) {
-		message.author.send('Your message in the #selling channel was deleted because it went over the 100 word limit.')
+	} else if (lines.length > lineLimit) {
+		message.author.send(
+			`Your message in the #selling channel was deleted because it went over the ${lineLimit} line limit.`,
+		)
 		message.delete()
 		return
 	}
