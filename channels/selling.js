@@ -9,13 +9,21 @@ module.exports = (message) => {
 	const lines = message.content.split(/\r\n|\r|\n/)
 	const lineLimit = 20
 
-	if (!message.content.match(/^(WTS|WTT|WTR)/gi)) {
+	if (message.content.match(/^(WTR|WTRO)/gi)) {
 		message.author.send(
-			"Your message in the #selling channel was deleted because it didn't start with WTS, WTT, or WTR.",
+			'Your message in the #selling channel was deleted because it appears that you are attempting to sell a service. To sell services, please use the #selling-services channel.',
 		)
 		message.delete()
 		return
-	} else if (lines.length > lineLimit) {
+	}
+
+	if (!message.content.match(/^(WTS|WTT)/gi)) {
+		message.author.send("Your message in the #selling channel was deleted because it didn't start with WTS or WTT.")
+		message.delete()
+		return
+	}
+
+	if (lines.length > lineLimit) {
 		message.author.send(
 			`Your message in the #selling channel was deleted because it went over the ${lineLimit} line limit.`,
 		)
