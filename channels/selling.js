@@ -7,7 +7,19 @@ module.exports = (message) => {
 	const cooldown = 24 * 60 * 60 * 1000
 
 	const lines = message.content.split(/\r\n|\r|\n/)
-	const lineLimit = 20
+	const lineLimit = 8
+
+	if (timestamp) {
+		const now = +new Date()
+
+		if (now - timestamp < cooldown) {
+			message.author.send(
+				'Your message in the #selling channel was deleted because you have already posted there in the last 24 hours.',
+			)
+			message.delete()
+			return
+		}
+	}
 
 	if (message.content.match(/^(WTR|WTRO)/gi)) {
 		message.author.send(
@@ -31,16 +43,10 @@ module.exports = (message) => {
 		return
 	}
 
-	if (timestamp) {
-		const now = +new Date()
-
-		if (now - timestamp < cooldown) {
-			message.author.send(
-				'Your message in the #selling channel was deleted because you have already posted there in the last 24 hours.',
-			)
-			message.delete()
-			return
-		}
+	if (message.content.includes('discord.gg/' || 'discordapp.com/invite/')) {
+		message.author.send('Your message in the #selling channel was deleted because it contained an invite link.')
+		message.delete()
+		return
 	}
 
 	users[message.author.id] = message.createdTimestamp
