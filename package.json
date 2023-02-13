@@ -4,6 +4,7 @@
 	"main": "index.js",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^12.5.1"
+		"discord.js": "^12.5.1",
+		"moment": "^2.29.4"
 	}
 }

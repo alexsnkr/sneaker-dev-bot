@@ -1,10 +1,10 @@
 const store = require('../lib/json-store')
+const moment = require('moment')
 
 module.exports = (message) => {
 	const users = store.get('selling-services') ?? {}
 
 	const timestamp = users[message.author.id]
-	const cooldown = 48 * 60 * 60 * 1000
 
 	if (!message.content.match(/^(WTS|WTT|WTR)/gi)) {
 		message.author.send(
@@ -15,9 +15,9 @@ module.exports = (message) => {
 	}
 
 	if (timestamp) {
-		const now = +new Date()
+		const date = moment(timestamp)
 
-		if (now - timestamp < cooldown) {
+		if (date.diff(moment(), 'hours') < 24) {
 			message.author.send(
 				'Your message in the #selling-services channel was deleted because you have already posted there in the last 24 hours.',
 			)
