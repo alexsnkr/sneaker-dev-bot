@@ -9,12 +9,8 @@ module.exports = (message) => {
 	const lines = message.content.split(/\r\n|\r|\n/)
 	const lineLimit = 8
 
-	console.log(timestamp)
-
 	if (timestamp) {
 		const date = moment(timestamp)
-
-		console.log(date.diff(moment(), 'hours'))
 
 		if (moment().diff(date, 'hours') < 24) {
 			message.author.send(
