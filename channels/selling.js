@@ -9,10 +9,14 @@ module.exports = (message) => {
 	const lines = message.content.split(/\r\n|\r|\n/)
 	const lineLimit = 8
 
+	console.log(timestamp)
+
 	if (timestamp) {
 		const date = moment(timestamp)
 
-		if (date.diff(moment(), 'hours') < 24) {
+		console.log(date.diff(moment(), 'hours'))
+
+		if (moment().diff(date, 'hours') < 24) {
 			message.author.send(
 				'Your message in the #selling channel was deleted because you have already posted there in the last 24 hours.',
 			)

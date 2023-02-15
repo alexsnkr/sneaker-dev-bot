@@ -17,7 +17,7 @@ module.exports = (message) => {
 	if (timestamp) {
 		const date = moment(timestamp)
 
-		if (date.diff(moment(), 'hours') < 24) {
+		if (moment().diff(date, 'hours') < 24) {
 			message.author.send(
 				'Your message in the #selling-services channel was deleted because you have already posted there in the last 24 hours.',
 			)
