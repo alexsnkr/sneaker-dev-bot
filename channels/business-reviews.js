@@ -1,6 +1,6 @@
-const moment = require('moment')
+import moment from 'moment'
 
-module.exports = (message) => {
+export default (message) => {
 	const timestamp = moment(message.member.joinedTimestamp)
 
 	if (moment().diff(timestamp, 'days') < 7) {

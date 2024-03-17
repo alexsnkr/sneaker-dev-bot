@@ -1,4 +1,4 @@
-module.exports = (message) => {
+export default (message) => {
 	const messageContent = message.content.toLowerCase()
 	const requiredFields = ['project type', 'compensation', 'current project state', 'programming language']
 	const hasFields = requiredFields.every((field) => messageContent.includes(field))

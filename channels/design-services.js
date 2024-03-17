@@ -1,6 +1,6 @@
-const store = require('../lib/json-store')
+import store from '../lib/json-store.js'
 
-module.exports = (message) => {
+export default (message) => {
 	const words = message.content.split(' ')
 
 	if (words.length > 130) {

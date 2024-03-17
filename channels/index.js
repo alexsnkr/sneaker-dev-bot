@@ -1,12 +1,12 @@
-const selling = require('./selling')
-const sellingServices = require('./selling-services')
-const buying = require('./buying')
-const lookingForDev = require('./looking-for-dev')
-const designServices = require('./design-services')
-const businessReviews = require('./business-reviews')
-const devForHire = require('./dev-for-hire')
+import selling from './selling.js'
+import sellingServices from './selling-services.js'
+import buying from './buying.js'
+import lookingForDev from './looking-for-dev.js'
+import designServices from './design-services.js'
+import businessReviews from './business-reviews.js'
+import devForHire from './dev-for-hire.js'
 
-module.exports = {
+export default {
 	selling,
 	buying,
 	'looking-for-dev': lookingForDev,

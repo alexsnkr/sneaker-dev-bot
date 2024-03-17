@@ -1,7 +1,7 @@
-const store = require('../lib/json-store')
-const moment = require('moment')
+import store from '../lib/json-store.js'
+import moment from 'moment'
 
-module.exports = (message) => {
+export default (message) => {
 	const users = store.get('selling-services') ?? {}
 
 	const timestamp = users[message.author.id]

@@ -3,8 +3,10 @@
 	"version": "0.0.1",
 	"main": "index.js",
 	"license": "MIT",
+	"type": "module",
 	"dependencies": {
-		"discord.js": "^12.5.1",
+		"discord.js": "^14.14.1",
+		"dotenv": "^16.4.5",
 		"moment": "^2.29.4"
 	}
 }
