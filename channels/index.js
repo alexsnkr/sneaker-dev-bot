@@ -1,5 +1,6 @@
 import selling from './selling.js'
 import sellingServices from './selling-services.js'
+import sellingNew from './selling-new.js'
 import buying from './buying.js'
 import lookingForDev from './looking-for-dev.js'
 import designServices from './design-services.js'
@@ -14,4 +15,5 @@ export default {
 	'selling-services': sellingServices,
 	'business-reviews': businessReviews,
 	'dev-for-hire': devForHire,
+	'selling-new': sellingNew,
 }
